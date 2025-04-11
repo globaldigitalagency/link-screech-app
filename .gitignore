@@ -17,3 +17,8 @@
 /.yarnrc
 /.npmrc
 /.bash_project_perso.sh
+
+# ScreamingFrogSEOSpider
+/.ScreamingFrogSEOSpider
+/.java
+/.pdfbox.cache
