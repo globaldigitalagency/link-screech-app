@@ -1,0 +1,31 @@
+services:
+  web:
+    container_name: web_link-screech-app
+    image: globaldigitalagency/sample:8.3
+    build:
+      context: .
+      dockerfile: Dockerfile
+    labels:
+      - "traefik.enable=true"
+      # http
+      - "traefik.http.routers.link-screech-app.rule=Host(`link-screech-app.wsl`)"
+      - "traefik.http.routers.link-screech-app.entrypoints=web"
+      # https
+      - "traefik.http.routers.link-screech-app_https.tls=true"
+      - "traefik.http.routers.link-screech-app_https.rule=Host(`link-screech-app.wsl`)"
+      - "traefik.http.routers.link-screech-app_https.entrypoints=websecure"
+    volumes:
+      - .:/var/www
+      - ./.docker/vhosts:/etc/apache2/sites-enabled
+      - ../dev-tools/aliases/.bash_global.sh:/.bash_global.sh
+      - ../dev-tools/aliases/.bash_global_perso.sh:/.bash_global_perso.sh
+    networks:
+      - traefik-net
+    # extra host for xdebug
+    extra_hosts:
+      - host.docker.internal:host-gateway
+
+
+networks:
+  traefik-net:
+    external: true

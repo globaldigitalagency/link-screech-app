@@ -1,0 +1,19 @@
+
+###> symfony/framework-bundle ###
+/.env.local
+/.env.local.php
+/.env.*.local
+/config/secrets/prod/prod.decrypt.private.php
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+
+#/.bashrc
+/.bash_history
+/.bash_aliases
+/.composer
+/.cache
+/.yarnrc
+/.npmrc
+/.bash_project_perso.sh
