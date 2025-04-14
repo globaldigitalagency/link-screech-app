@@ -19,6 +19,9 @@
 /.bash_project_perso.sh
 
 # ScreamingFrogSEOSpider
-/.ScreamingFrogSEOSpider
+/.ScreamingFrogSEOSpider/*
+!/.ScreamingFrogSEOSpider/reports
+/.ScreamingFrogSEOSpider/reports/*
+!/.ScreamingFrogSEOSpider/reports/.gitkeep
 /.java
 /.pdfbox.cache
