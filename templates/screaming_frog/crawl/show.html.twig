@@ -1,0 +1,71 @@
+{% extends 'screaming_frog/layout.html.twig' %}
+
+{% block content %}
+  <div class="show container">
+    <div class="mb-3">
+      <h1>Crawl {{ crawl.url }}</h1>
+    </div>
+    <div class="mb-3">
+      <div class="row justify-content-center">
+        <div class="col-lg-2 col-md-4 col-12">
+          <div class="card">
+            <h3 class="card-header text-center">Date</h3>
+            <div class="card-body">
+              <div class="card-text text-center">{{ crawl.date|date('d-m-Y H:i:s') }}</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-12">
+          <div class="card">
+            <h3 class="card-header text-center">Urls parcourues</h3>
+            <div class="card-body">
+              <div class="card-text text-center">{{ crawl.summary.urlsEncounteredNumber }}</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-12">
+          <div class="card">
+            <h3 class="card-header text-center">Outlinks</h3>
+            <div class="card-body">
+              <div class="card-text text-center">{{ crawl.summary.outlinksNumber }}</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-12">
+          <div class="card">
+            <h3 class="card-header text-center">Domaines inactifs</h3>
+            <div class="card-body">
+              <div class="card-text text-center">{{ crawl.summary.urlsDomainExpiredNumber }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      {% for table in crawl.tables %}
+        <h2>{{ table.name }}</h2>
+        <div class="overflow-auto">
+          <table class="table table-striped w-mc">
+            <thead class="thead-light">
+              <tr>
+                {% for field in table.fields %}
+                  <th scope="col">{{ field }}</th>
+                {% endfor %}
+              </tr>
+            </thead>
+            <tbody>
+              {% for row in table.data %}
+                <tr>
+                  {% for field in table.fields %}
+                    <td>{{ row[field] }}</td>
+                  {% endfor %}
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

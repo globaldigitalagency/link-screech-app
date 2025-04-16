@@ -1,0 +1,36 @@
+{% extends 'screaming_frog/layout.html.twig' %}
+
+{% block content %}
+  <div class="new container h-100 d-flex justify-content-center align-items-center">
+    <div class="form-container w-50">
+      <h1 class="text-center mb-3">Nouveau groupe de crawl</h1>
+      <p class="text-center mb-3">Sélectionnez un fichier de crawl et donnez-lui un nom.</p>
+
+      {{ form_start(form) }}
+        {% include '_partials/form/_form.html.twig' with {
+          fields: [
+            {
+              type: form.groupName.vars.block_prefixes[1],
+              label: form_label(form.groupName),
+              widget: form_widget(form.groupName, {
+                'attr':{
+                  'class': 'form-control'
+                }
+              })
+            },
+            {
+              type: form.file.vars.block_prefixes[1],
+              label: form_label(form.file),
+              widget: form_widget(form.file, {
+                'attr':{
+                  'class': 'form-control',
+                  'id': 'csv-file'
+                }
+              })
+            }
+          ]
+        } %}
+      {{ form_end(form) }}
+    </div>
+  </div>
+{% endblock %}

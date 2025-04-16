@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  <header>
+    {% include '_partials/_menu.html.twig' with {
+      brand: {
+        'path': '#',
+        'label': 'Screaming Frog',
+      },
+      links: [
+        {
+          'path': path('screaming_frog_list'),
+          'label': 'Liste des groupes',
+          'active': app.request.attributes.get('_route') == 'screaming_frog_list'
+        },
+        {
+          'path': path('screaming_frog_new'),
+          'label': 'Nouveau groupe',
+          'active': app.request.attributes.get('_route') == 'screaming_frog_new'
+        }
+      ]
+    } %}
+  </header>
+  <main id="screaming-frog">
+    {% block content %}{% endblock %}
+  </main>
+{% endblock %}
