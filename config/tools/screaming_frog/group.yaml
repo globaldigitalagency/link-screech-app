@@ -1,0 +1,9 @@
+list:
+  path: /list
+  methods: [GET]
+  controller: App\ScreamingFrog\Controller\GroupController::list
+
+new:
+  path: /new
+  methods: [GET, POST]
+  controller: App\ScreamingFrog\Controller\GroupController::new

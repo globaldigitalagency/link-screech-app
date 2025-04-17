@@ -9,14 +9,14 @@
       },
       links: [
         {
-          'path': path('screaming_frog_list'),
+          'path': path('screaming_frog_group_list'),
           'label': 'Liste des groupes',
-          'active': app.request.attributes.get('_route') == 'screaming_frog_list'
+          'active': app.request.attributes.get('_route') == 'screaming_frog_group_list'
         },
         {
-          'path': path('screaming_frog_new'),
+          'path': path('screaming_frog_group_new'),
           'label': 'Nouveau groupe',
-          'active': app.request.attributes.get('_route') == 'screaming_frog_new'
+          'active': app.request.attributes.get('_route') == 'screaming_frog_group_new'
         }
       ]
     } %}

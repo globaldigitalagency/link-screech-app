@@ -1,0 +1,9 @@
+crawl:
+  resource: 'crawl.yaml'
+  prefix: /crawl
+  name_prefix: crawl_
+
+group:
+  resource: 'group.yaml'
+  prefix: /group
+  name_prefix: group_

@@ -1,0 +1,9 @@
+list:
+  path: /list/{group}/{page}
+  methods: [GET]
+  controller: App\ScreamingFrog\Controller\CrawlController::list
+
+show:
+  path: /show/{group}/{crawl}
+  methods: [GET, POST]
+  controller: App\ScreamingFrog\Controller\CrawlController::show

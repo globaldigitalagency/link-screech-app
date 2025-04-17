@@ -1,27 +1,69 @@
 {% extends 'screaming_frog/layout.html.twig' %}
 
 {% block content %}
-  <div class="list container">
-    <div class="d-flex justify-content-between gap-4 mb-3">
-      <h1>Liste des groupes de crawls</h1>
-      <div>
-        <a class="btn btn-success" href="{{ path('screaming_frog_new') }}"><i class="bi bi-plus-lg"></i> Nouveau groupe</a>
-      </div>
+  <div class="group container">
+    <div class="mb-3">
+      <h1>Liste des crawls du groupe {{ group }}</h1>
     </div>
     <div class="row">
-      {% for group in groups %}
-        <a class="col-lg-3 col-md-6 col-12" href="{{ path('screaming_frog_group', {'group': group.name, 'page': 1}) }}">
+      {% for crawl in crawls %}
+        <a class="col-lg-3 col-md-4 col-12" href="{{ path('screaming_frog_crawl_show', {'group': group, 'crawl': crawl.folderName}) }}">
           <div class="card">
             <span class="card-header">
-              {{ group.name }}
+              {{ crawl.url }}
             </span>
             <div class="card-body">
-              <p class="card-text">Date : {{ group.date|date('d-m-Y') }}</p>
-              <p class="card-text">Crawls : {{ group.crawlsNumber }}</p>
+              <p class="card-text">
+                Heure : {{ crawl.date|date('H:i:s') }} <br>
+                URLs parcourues : {{ crawl.summary.urlsEncounteredNumber }} <br>
+                Outlinks : {{ crawl.summary.outlinksNumber }} <br>
+                Domanes inactifs : {{ crawl.summary.urlsDomainExpiredNumber }}
+              </p>
             </div>
           </div>
         </a>
       {% endfor %}
+    </div>
+    <div class="d-flex justify-content-center p-3">
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item">
+            {% if page > 1 %}
+              <a href="{{ path('screaming_frog_crawl_list', {'group': group, 'page': page - 1}) }}" class="page-link">
+                Précédent
+              </a>
+            {% else %}
+              <a href="#" class="page-link disabled" tabindex="-1" aria-disabled="true">
+                Précédent
+              </a>
+            {% endif %}
+          </li>
+
+          {% for pageNumber in 1..maxPage %}
+            <li class="page-item">
+              {% if page == pageNumber %}
+                <a href="#" class="page-link active">{{ pageNumber }}</a>
+              {% else %}
+                <a href="{{ path('screaming_frog_crawl_list', {'group': group, 'page': pageNumber}) }}" class="page-link">
+                  {{ pageNumber }}
+                </a>
+              {% endif %}
+            </li>
+          {% endfor %}
+
+          <li class="page-item">
+            {% if page < maxPage %}
+              <a href="{{ path('screaming_frog_crawl_list', {'group': group, 'page': page + 1}) }}" class="page-link">
+                Suivant
+              </a>
+            {% else %}
+              <a href="#" class="page-link disabled" tabindex="-1" aria-disabled="true">
+                Suivant
+              </a>
+            {% endif %}
+          </li>
+        </ul>
+      </nav>
     </div>
   </div>
 {% endblock %}

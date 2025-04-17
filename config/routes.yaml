@@ -1,4 +1,4 @@
 screaming_frog:
-  resource: 'tools/screaming_frog.yaml'
+  resource: 'tools/screaming_frog/screaming_frog.yaml'
   prefix: /screaming-frog
   name_prefix: screaming_frog_
