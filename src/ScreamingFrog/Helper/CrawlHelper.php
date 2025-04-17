@@ -71,9 +71,9 @@ class CrawlHelper
     {
         $summary = new SummaryModel();
 
-        $urlsEncountered = $this->csvHelper->getCsvData($crawlDir . '/' . CrawlFileEnum::ALL_URL_FILE_NAME->value, true);
-        $outlinks = $this->csvHelper->getCsvData($crawlDir . '/' . CrawlFileEnum::OUTLINKS_FILE_NAME->value, true);
-        $urlsDomainExpired = $this->csvHelper->getCsvData($crawlDir . '/' . CrawlFileEnum::EXTERNAL_NO_RESPONSE_FILE_NAME->value, true);
+        $urlsEncountered = $this->csvHelper->countRows($crawlDir . '/' . CrawlFileEnum::ALL_URL_FILE_NAME->value);
+        $outlinks = $this->csvHelper->countRows($crawlDir . '/' . CrawlFileEnum::OUTLINKS_FILE_NAME->value);
+        $urlsDomainExpired = $this->csvHelper->countRows($crawlDir . '/' . CrawlFileEnum::EXTERNAL_NO_RESPONSE_FILE_NAME->value);
 
         $summary->setUrlsEncounteredNumber($urlsEncountered - 1); // Exclude header row
         $summary->setOutlinksNumber($outlinks - 1); // Exclude header row
@@ -86,7 +86,7 @@ class CrawlHelper
     {
         $table = new TableModel();
 
-        $data = $this->csvHelper->getCsvData($filePath);
+        $data = $this->csvHelper->getAllRows($filePath);
 
         $header = array_shift($data); // Get the header row
 
@@ -98,11 +98,11 @@ class CrawlHelper
         return $table;
     }
 
-    private function getUrlFromCrawl(string $filePath) {
-        $csvData = $this->csvHelper->getCsvData($filePath);
-        $urlRow = array_shift($csvData);
+    private function getUrlFromCrawl(string $filePath): bool|string
+    {
+        $urlRow = $this->csvHelper->getRow($filePath, line: 0);
 
-        if (!isset($urlRow[1])) {
+        if (empty($urlRow) || !isset($urlRow[1]) || !str_starts_with($urlRow[1], 'http')) {
             return false;
         }
 

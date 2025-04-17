@@ -13,8 +13,12 @@
               {{ crawl.url }}
             </span>
             <div class="card-body">
-              <p class="card-text">Heure : {{ crawl.date|date('H:i:s') }}</p>
-              <p class="card-text">Domanes inactifs : {{ crawl.summary.urlsDomainExpiredNumber }}</p>
+              <p class="card-text">
+                Heure : {{ crawl.date|date('H:i:s') }} <br>
+                URLs parcourues : {{ crawl.summary.urlsEncounteredNumber }} <br>
+                Outlinks : {{ crawl.summary.outlinksNumber }} <br>
+                Domanes inactifs : {{ crawl.summary.urlsDomainExpiredNumber }}
+              </p>
             </div>
           </div>
         </a>
