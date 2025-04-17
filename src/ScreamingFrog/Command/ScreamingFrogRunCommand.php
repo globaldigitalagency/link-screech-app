@@ -41,12 +41,9 @@ class ScreamingFrogRunCommand extends Command
 
         $urls = $this->csvHelper->getAllRows($filePath);
 
-        $fs = new Filesystem();
-        $fs->remove($filePath);
-
         // if there are headers, remove them to get only the urls
         $headers = array_shift($urls);
-        if (isset($headers[0]) && preg_match('/^(?:\u{FEFF})?(?:http|https):\/\/.*$/i', $headers[0])) {
+        if (isset($headers[0]) && preg_match('/^(?:\xEF\xBB\xBF)?(?:http|https):\/\/.*$/i', $headers[0])) {
             $headers[0] = str_replace('\u{FEFF}', '', $headers[0]);
             $urls[] = $headers;
         }
@@ -57,6 +54,9 @@ class ScreamingFrogRunCommand extends Command
 
         $urls = array_map(fn($url) => $url[0], $urls);
         $this->commandHelper->runCrawls($urls, $crawlName);
+
+        $fs = new Filesystem();
+        $fs->remove($filePath);
 
         dump(time());
         return Command::SUCCESS;
