@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\ScreamingFrog\Form;
 
+use App\ScreamingFrog\Form\Constraint\ValidCsv;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -19,6 +20,9 @@ class GroupFormType extends AbstractType
                 'label' => "Fichier d'urls",
                 'mapped' => false,
                 'required' => true,
+                'constraints' => [
+                    new ValidCsv(),
+                ],
             ])
             ->add('groupName', TextType::class, [
                 'label' => 'Nom du groupe de crawl',
