@@ -1,13 +1,7 @@
 {
-  "build/app.css": "/build/app.css",
-  "build/app.js": "/build/app.js",
-  "build/runtime.js": "/build/runtime.js",
-  "build/vendors-node_modules_bootstrap_dist_js_bootstrap_esm_js.js": "/build/vendors-node_modules_bootstrap_dist_js_bootstrap_esm_js.js",
-  "build/vendors-node_modules_bootstrap_dist_css_bootstrap_css.css": "/build/vendors-node_modules_bootstrap_dist_css_bootstrap_css.css",
-  "build/vendors-node_modules_bootstrap_dist_js_bootstrap_js-node_modules_bootstrap_dist_css_bootstrap_css.css": "/build/vendors-node_modules_bootstrap_dist_js_bootstrap_js-node_modules_bootstrap_dist_css_bootstrap_css.css",
-  "build/vendors-node_modules_bootstrap_dist_js_bootstrap_js-node_modules_bootstrap_dist_css_bootstrap_css.js": "/build/vendors-node_modules_bootstrap_dist_js_bootstrap_js-node_modules_bootstrap_dist_css_bootstrap_css.js",
-  "build/vendors-node_modules_bootstrap_dist_js_bootstrap_bundle_js-node_modules_bootstrap_dist_css_bo-40b8f7.css": "/build/vendors-node_modules_bootstrap_dist_js_bootstrap_bundle_js-node_modules_bootstrap_dist_css_bo-40b8f7.css",
-  "build/vendors-node_modules_bootstrap_dist_js_bootstrap_bundle_js-node_modules_bootstrap_dist_css_bo-40b8f7.js": "/build/vendors-node_modules_bootstrap_dist_js_bootstrap_bundle_js-node_modules_bootstrap_dist_css_bo-40b8f7.js",
-  "build/vendors-node_modules_bootstrap_dist_js_bootstrap_bundle_min_js-node_modules_bootstrap_dist_cs-605936.css": "/build/vendors-node_modules_bootstrap_dist_js_bootstrap_bundle_min_js-node_modules_bootstrap_dist_cs-605936.css",
-  "build/vendors-node_modules_bootstrap_dist_js_bootstrap_bundle_min_js-node_modules_bootstrap_dist_cs-605936.js": "/build/vendors-node_modules_bootstrap_dist_js_bootstrap_bundle_min_js-node_modules_bootstrap_dist_cs-605936.js"
+  "build/app.css": "/build/app.b51b7e41.css",
+  "build/app.js": "/build/app.95b187ce.js",
+  "build/runtime.js": "/build/runtime.a3b87112.js",
+  "build/40.151ac6e3.css": "/build/40.151ac6e3.css",
+  "build/40.f0c765f6.js": "/build/40.f0c765f6.js"
 }
