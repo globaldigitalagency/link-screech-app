@@ -105,7 +105,7 @@ class CrawlController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             /** @var UploadedFile $file */
             $file = $form->get('file')->getData();
-            $crawlName = $form->get('crawlName')->getData();
+            $crawlName = $form->get('groupName')->getData();
 
             $file->move(sprintf('%s/%s', $this->projectDir, $this->csvUploadPath), $file->getClientOriginalName());
 
