@@ -26,7 +26,7 @@ a {
     color: inherit;
 }
 
-.form-control, .input-group-text {
+.form-control, .input-group-text, .btn, .toast {
     font-size: 1.4rem;
 }
 
@@ -42,4 +42,9 @@ a {
     & > * {
         padding: calc(var(--bs-gutter-x) * 0.5);
     }
+}
+
+.toasts {
+    right: 3vh;
+    bottom: 3vh;
 }
