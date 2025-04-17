@@ -20,6 +20,7 @@
 
 # ScreamingFrogSEOSpider
 /.ScreamingFrogSEOSpider/*
+!/.ScreamingFrogSEOSpider/config
 !/.ScreamingFrogSEOSpider/reports
 /.ScreamingFrogSEOSpider/reports/*
 !/.ScreamingFrogSEOSpider/reports/.gitkeep
