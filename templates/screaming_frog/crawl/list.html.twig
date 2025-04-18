@@ -25,6 +25,10 @@
       {% endfor %}
     </div>
 
-    {% include '_partials/_pagination.html.twig' %}
+    {% include '_partials/_pagination.html.twig' with {
+      previousLink: path('screaming_frog_crawl_list', {'group': group, 'page': page - 1}),
+      pageLink: path('screaming_frog_crawl_list', {'group': group, 'page': '__page__'}),
+      nextLink: path('screaming_frog_crawl_list', {'group': group, 'page': page + 1}),
+    } %}
   </div>
 {% endblock %}

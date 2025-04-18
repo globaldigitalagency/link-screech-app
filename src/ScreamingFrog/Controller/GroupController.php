@@ -55,7 +55,7 @@ class GroupController extends AbstractController
         return $this->render('screaming_frog/group/list.html.twig', [
             'groups' => $groups,
             'maxPage' => $maxPage,
-            'page' => 1,
+            'page' => $page,
         ]);
     }
 
@@ -74,8 +74,6 @@ class GroupController extends AbstractController
             $crawlName = $form->get('groupName')->getData();
 
             $file->move(sprintf('%s/%s', $this->projectDir, $this->csvUploadPath), $file->getClientOriginalName());
-
-
 
             $this->bus->dispatch(new ScreamingFrogCmd(
                 sprintf('%s/%s/%s', $this->projectDir, $this->csvUploadPath, $file->getClientOriginalName()),

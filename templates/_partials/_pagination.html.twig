@@ -3,7 +3,7 @@
     <ul class="pagination">
       <li class="page-item">
         {% if page > 1 %}
-          <a href="{{ path('screaming_frog_crawl_list', {'group': group, 'page': page - 1}) }}" class="page-link">
+          <a href="{{ previousLink }}" class="page-link">
             Précédent
           </a>
         {% else %}
@@ -18,7 +18,7 @@
           {% if page == pageNumber %}
             <a href="#" class="page-link active">{{ pageNumber }}</a>
           {% else %}
-            <a href="{{ path('screaming_frog_crawl_list', {'group': group, 'page': pageNumber}) }}" class="page-link">
+            <a href="{{ pageLink|replace({'__page__': pageNumber}) }}" class="page-link">
               {{ pageNumber }}
             </a>
           {% endif %}
@@ -27,7 +27,7 @@
 
       <li class="page-item">
         {% if page < maxPage %}
-          <a href="{{ path('screaming_frog_crawl_list', {'group': group, 'page': page + 1}) }}" class="page-link">
+          <a href="{{ nextLink }}" class="page-link">
             Suivant
           </a>
         {% else %}
