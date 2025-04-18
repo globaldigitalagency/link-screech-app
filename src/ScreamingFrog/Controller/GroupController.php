@@ -18,6 +18,8 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class GroupController extends AbstractController
 {
+    const NUMBER_BY_PAGE = 10;
+
     public function __construct(
         private readonly string $projectDir,
         private readonly string $reportsPath,
@@ -28,7 +30,7 @@ class GroupController extends AbstractController
     {
     }
 
-    public function list(): Response
+    public function list(int $page): Response
     {
         $reportsPath = sprintf('%s/%s', $this->projectDir, $this->reportsPath);
 
@@ -39,10 +41,21 @@ class GroupController extends AbstractController
         $fd = new Finder();
         $groupsDir = $fd->directories()->in($reportsPath)->depth(0);
 
-        $groups = $this->groupHelper->getMappedGroups($groupsDir);
+        $maxPage = ceil($fd->count() / self::NUMBER_BY_PAGE);
+        if ($maxPage <= 0) {
+            return $this->redirectToRoute('screaming_frog_group_new');
+        } else if ($page < 1 || $page > $maxPage) {
+            return $this->redirectToRoute('screaming_frog_group_list', [
+                'page' => 1,
+            ]);
+        }
+
+        $groups = $this->groupHelper->getMappedGroups($groupsDir, $page, self::NUMBER_BY_PAGE);
 
         return $this->render('screaming_frog/group/list.html.twig', [
             'groups' => $groups,
+            'maxPage' => $maxPage,
+            'page' => 1,
         ]);
     }
 
@@ -62,12 +75,16 @@ class GroupController extends AbstractController
 
             $file->move(sprintf('%s/%s', $this->projectDir, $this->csvUploadPath), $file->getClientOriginalName());
 
+
+
             $this->bus->dispatch(new ScreamingFrogCmd(
                 sprintf('%s/%s/%s', $this->projectDir, $this->csvUploadPath, $file->getClientOriginalName()),
                 $crawlName,
             ));
 
-            return $this->redirectToRoute('screaming_frog_list');
+            return $this->redirectToRoute('screaming_frog_group_list', [
+                'page' => 1
+            ]);
         }
 
         return $this->render('screaming_frog/group/new.html.twig', [

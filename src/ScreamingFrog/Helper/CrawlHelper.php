@@ -15,13 +15,13 @@ class CrawlHelper
     {
     }
 
-    public function getGroupedCrawls(Finder $crawls, int $page, int $number): array
+    public function getMappedCrawls(Finder $crawls, int $page, int $numberByPage): array
     {
-        $start = ($page - 1) * $number;
+        $start = ($page - 1) * $numberByPage;
 
         $crawls = iterator_to_array($crawls);
         usort($crawls, fn ($a, $b) => $a->getBasename() <=> $b->getBasename());
-        $wantedCrawls = array_slice($crawls, $start, $number);
+        $wantedCrawls = array_slice($crawls, $start, $numberByPage);
 
         $mappedCrawls = [];
         foreach ($wantedCrawls as $crawl) {

@@ -9,7 +9,7 @@
       },
       links: [
         {
-          'path': path('screaming_frog_group_list'),
+          'path': path('screaming_frog_group_list', {'page': 1}),
           'label': 'Liste des groupes',
           'active': app.request.attributes.get('_route') == 'screaming_frog_group_list'
         },

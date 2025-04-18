@@ -35,11 +35,13 @@ class CrawlController extends AbstractController
         }
 
         $fd = new Finder();
-        $fd->directories()->in($groupDir)->depth(0);
+        $crawls = $fd->directories()->in($groupDir)->depth(0);
 
         $maxPage = ceil($fd->count() / self::NUMBER_BY_PAGE);
         if ($maxPage <= 0) {
-            return $this->redirectToRoute('screaming_frog_group_list');
+            return $this->redirectToRoute('screaming_frog_group_list', [
+                'page' => 1
+            ]);
         } else if ($page < 1 || $page > $maxPage) {
             return $this->redirectToRoute('screaming_frog_crawl_list', [
                 'group' => $group,
@@ -47,8 +49,7 @@ class CrawlController extends AbstractController
             ]);
         }
 
-        $crawls = $fd->directories()->in($groupDir)->depth(0);
-        $crawls = $this->crawlHelper->getGroupedCrawls($crawls, $page, self::NUMBER_BY_PAGE);
+        $crawls = $this->crawlHelper->getMappedCrawls($crawls, $page, self::NUMBER_BY_PAGE);
 
         return $this->render('screaming_frog/crawl/list.html.twig', [
             'crawls' => $crawls,

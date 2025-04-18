@@ -1,5 +1,5 @@
 list:
-  path: /list
+  path: /list/{page}
   methods: [GET]
   controller: App\ScreamingFrog\Controller\GroupController::list
 
