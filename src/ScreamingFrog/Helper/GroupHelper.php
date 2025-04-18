@@ -26,10 +26,11 @@ class GroupHelper
             $fd = new Finder();
             $fd->directories()->in($group->getPathname())->depth(0);
 
-            $groupModel = new GroupModel();
-            $groupModel->setCrawlsNumber($fd->count());
-            $groupModel->setName($group->getBasename());
-            $groupModel->setDate(new DateTime('@' . $group->getCTime()));
+            $groupModel = new GroupModel(
+                crawlsNumber: $fd->count(),
+                name: $group->getBasename(),
+                date: new DateTime('@' . $group->getCTime()),
+            );
 
             yield $groupModel;
         }

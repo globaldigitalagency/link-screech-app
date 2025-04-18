@@ -46,22 +46,17 @@ class CrawlHelper
             return null;
         }
 
-        $crawlModel = new CrawlModel();
         $url = $this->getUrlFromCrawl(sprintf('%s/%s', $crawlPath, CrawlFileEnum::MAIN_FILE_NAME->value));
 
         if (empty($url)) {
             return null;
         }
 
-        $crawlModel->setUrl($url);
-        $crawlModel->setFolderName($crawlDir);
-        $crawlModel->setDate(DateTime::createFromFormat('Y.m.d.H.i.s', $crawlDir));
-
-        $crawlModel->setSummary($this->buildSummary($crawlPath));
+        $crawlModel = new CrawlModel($url, $crawlDir, DateTime::createFromFormat('Y.m.d.H.i.s', $crawlDir), $this->buildSummary($crawlPath));
         if(!$groupDisplay) {
-            $crawlModel->addTable(
+            $crawlModel->tables[] =
                 $this->buildTable(sprintf('%s/%s', $crawlPath, CrawlFileEnum::EXTERNAL_NO_RESPONSE_FILE_NAME->value), 'Domaines inactifs')
-            );
+            ;
         }
 
         return $crawlModel;
@@ -69,33 +64,24 @@ class CrawlHelper
 
     private function buildSummary(string $crawlDir): SummaryModel
     {
-        $summary = new SummaryModel();
-
-        $urlsEncountered = $this->csvHelper->countRows($crawlDir . '/' . CrawlFileEnum::ALL_URL_FILE_NAME->value);
-        $outlinks = $this->csvHelper->countRows($crawlDir . '/' . CrawlFileEnum::OUTLINKS_FILE_NAME->value);
-        $urlsDomainExpired = $this->csvHelper->countRows($crawlDir . '/' . CrawlFileEnum::EXTERNAL_NO_RESPONSE_FILE_NAME->value);
-
-        $summary->setUrlsEncounteredNumber($urlsEncountered - 1); // Exclude header row
-        $summary->setOutlinksNumber($outlinks - 1); // Exclude header row
-        $summary->setUrlsDomainExpiredNumber($urlsDomainExpired - 1); // Exclude header row
-
-        return $summary;
+        return new SummaryModel(
+            $this->csvHelper->countRows($crawlDir . '/' . CrawlFileEnum::ALL_URL_FILE_NAME->value) - 1,
+            $this->csvHelper->countRows($crawlDir . '/' . CrawlFileEnum::OUTLINKS_FILE_NAME->value) - 1,
+            $this->csvHelper->countRows($crawlDir . '/' . CrawlFileEnum::EXTERNAL_NO_RESPONSE_FILE_NAME->value) - 1,
+        );
     }
 
     private function buildTable(string $filePath, string $name): TableModel
     {
-        $table = new TableModel();
-
         $data = $this->csvHelper->getAllRows($filePath);
-
         $header = array_shift($data); // Get the header row
-
-        $table->setName($name);
-        $table->setFields($header);
         $data = array_map(fn($row) => array_combine($header, $row), $data); // Combine header with each row
-        $table->setData($data);
 
-        return $table;
+        return new TableModel(
+            $name,
+            $header,
+            $data,
+        );
     }
 
     private function getUrlFromCrawl(string $filePath): bool|string
