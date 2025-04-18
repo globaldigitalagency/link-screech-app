@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace App\ScreamingFrog\Form;
 
 use App\ScreamingFrog\Form\Constraint\ValidCsv;
@@ -9,7 +7,6 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class GroupFormType extends AbstractType
 {
@@ -30,9 +27,5 @@ class GroupFormType extends AbstractType
                 'required' => true,
             ])
         ;
-    }
-
-    public function configureOptions(OptionsResolver $resolver)
-    {
     }
 }

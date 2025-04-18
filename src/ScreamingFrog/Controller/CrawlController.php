@@ -1,19 +1,11 @@
 <?php
 
-declare(strict_types=1);
-
 namespace App\ScreamingFrog\Controller;
 
-use App\ScreamingFrog\Form\GroupFormType;
 use App\ScreamingFrog\Helper\CrawlHelper;
-use App\ScreamingFrog\Helper\GroupHelper;
-use App\ScreamingFrog\Messenger\Object\ScreamingFrogCmd;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Finder\Finder;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Messenger\MessageBusInterface;
 
 class CrawlController extends AbstractController
 {
@@ -42,7 +34,7 @@ class CrawlController extends AbstractController
             return $this->redirectToRoute('screaming_frog_group_list', [
                 'page' => 1
             ]);
-        } else if ($page < 1 || $page > $maxPage) {
+        } elseif ($page < 1 || $page > $maxPage) {
             return $this->redirectToRoute('screaming_frog_crawl_list', [
                 'group' => $group,
                 'page' => 1,

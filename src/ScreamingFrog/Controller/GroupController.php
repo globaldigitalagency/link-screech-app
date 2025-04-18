@@ -1,11 +1,8 @@
 <?php
 
-declare(strict_types=1);
-
 namespace App\ScreamingFrog\Controller;
 
 use App\ScreamingFrog\Form\GroupFormType;
-use App\ScreamingFrog\Helper\CrawlHelper;
 use App\ScreamingFrog\Helper\GroupHelper;
 use App\ScreamingFrog\Messenger\Object\ScreamingFrogCmd;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -44,7 +41,7 @@ class GroupController extends AbstractController
         $maxPage = ceil($fd->count() / self::NUMBER_BY_PAGE);
         if ($maxPage <= 0) {
             return $this->redirectToRoute('screaming_frog_group_new');
-        } else if ($page < 1 || $page > $maxPage) {
+        } elseif ($page < 1 || $page > $maxPage) {
             return $this->redirectToRoute('screaming_frog_group_list', [
                 'page' => 1,
             ]);

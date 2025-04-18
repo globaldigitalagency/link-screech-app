@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace App\ScreamingFrog\Command;
 
 use App\ScreamingFrog\Helper\CommandHelper;
@@ -17,7 +15,6 @@ use Symfony\Component\Filesystem\Filesystem;
 class ScreamingFrogRunCommand extends Command
 {
     public function __construct(
-        private readonly string $projectDir,
         private readonly CommandHelper $commandHelper,
         private readonly CsvHelper $csvHelper,
     )
@@ -35,7 +32,6 @@ class ScreamingFrogRunCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        dump(time());
         $filePath = $input->getArgument('filePath');
         $crawlName = $input->getArgument('crawlName');
 
@@ -58,7 +54,6 @@ class ScreamingFrogRunCommand extends Command
         $fs = new Filesystem();
         $fs->remove($filePath);
 
-        dump(time());
         return Command::SUCCESS;
     }
 }

@@ -6,7 +6,6 @@ use App\ScreamingFrog\Helper\CommandHelper;
 use App\ScreamingFrog\Messenger\Object\ScreamingFrogCmd;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 use Symfony\Component\Process\PhpExecutableFinder;
-use Symfony\Component\Process\Process;
 
 #[AsMessageHandler]
 class ScreamingFrogCmdHandler

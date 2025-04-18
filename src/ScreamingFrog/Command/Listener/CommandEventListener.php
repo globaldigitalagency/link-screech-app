@@ -1,19 +1,13 @@
 <?php
 
-declare(strict_types=1);
-
 namespace App\ScreamingFrog\Command\Listener;
 
 use App\ScreamingFrog\Helper\LogHelper;
-use Symfony\Component\Console\Attribute\AsCommand;
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\ConsoleEvents;
 use Symfony\Component\Console\Event\ConsoleCommandEvent;
 use Symfony\Component\Console\Event\ConsoleErrorEvent;
 use Symfony\Component\Console\Event\ConsoleEvent;
 use Symfony\Component\Console\Event\ConsoleTerminateEvent;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class CommandEventListener implements EventSubscriberInterface
@@ -36,8 +30,7 @@ class CommandEventListener implements EventSubscriberInterface
     {
         $this->logHelper->setFileName($event->getCommand()->getName());
 
-        $instanceOf = get_class($event);
-        switch ($instanceOf) {
+        switch (get_class($event)) {
             case ConsoleCommandEvent::class:
                 $this->onConsoleCommand($event);
                 break;
