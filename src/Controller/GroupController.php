@@ -1,17 +1,16 @@
 <?php
 
-namespace App\ScreamingFrog\Controller;
+namespace App\Controller;
 
-use App\ScreamingFrog\Form\GroupFormType;
-use App\ScreamingFrog\Helper\GroupHelper;
-use App\ScreamingFrog\Messenger\Object\ScreamingFrogCmd;
+use App\Form\GroupFormType;
+use App\Helper\GroupHelper;
+use App\Messenger\Object\ScreamingFrogCmd;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Messenger\MessageBusInterface;
-use Symfony\Component\Routing\Attribute\Route;
 
 class GroupController extends AbstractController
 {

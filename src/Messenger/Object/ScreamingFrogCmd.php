@@ -1,6 +1,6 @@
 <?php
 
-namespace App\ScreamingFrog\Messenger\Object;
+namespace App\Messenger\Object;
 
 class ScreamingFrogCmd
 {

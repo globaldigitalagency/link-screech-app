@@ -1,11 +1,11 @@
 <?php
 
-namespace App\ScreamingFrog\Helper;
+namespace App\Helper;
 
-use App\ScreamingFrog\Enum\CrawlFileEnum;
-use App\ScreamingFrog\Model\CrawlModel;
-use App\ScreamingFrog\Model\SummaryModel;
-use App\ScreamingFrog\Model\TableModel;
+use App\Enum\CrawlFileEnum;
+use App\Model\CrawlModel;
+use App\Model\SummaryModel;
+use App\Model\TableModel;
 use DateTime;
 use Symfony\Component\Finder\Finder;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\ScreamingFrog\Form;
+namespace App\Form;
 
-use App\ScreamingFrog\Form\Constraint\ValidCsv;
+use App\Form\Constraint\ValidCsv;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;

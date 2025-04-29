@@ -1,8 +1,8 @@
 <?php
 
-namespace App\ScreamingFrog\Helper;
+namespace App\Helper;
 
-use App\ScreamingFrog\Model\GroupModel;
+use App\Model\GroupModel;
 use DateTime;
 use Symfony\Component\Finder\Finder;
 

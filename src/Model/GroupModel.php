@@ -1,6 +1,6 @@
 <?php
 
-namespace App\ScreamingFrog\Model;
+namespace App\Model;
 
 use DateTime;
 

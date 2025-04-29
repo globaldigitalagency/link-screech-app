@@ -1,8 +1,8 @@
 <?php
 
-namespace App\ScreamingFrog\Form\Constraint;
+namespace App\Form\Constraint;
 
-use App\ScreamingFrog\Form\Constraint\Validator\ValidCsvValidator;
+use App\Form\Constraint\Validator\ValidCsvValidator;
 use Symfony\Component\Validator\Constraint;
 
 class ValidCsv extends Constraint

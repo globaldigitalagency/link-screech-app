@@ -1,6 +1,6 @@
 <?php
 
-namespace App\ScreamingFrog\Form\Constraint\Validator;
+namespace App\Form\Constraint\Validator;
 
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraint;

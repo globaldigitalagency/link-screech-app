@@ -1,8 +1,8 @@
 <?php
 
-namespace App\ScreamingFrog\Controller;
+namespace App\Controller;
 
-use App\ScreamingFrog\Helper\CrawlHelper;
+use App\Helper\CrawlHelper;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpFoundation\Response;

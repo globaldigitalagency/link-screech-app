@@ -1,8 +1,8 @@
 <?php
 
-namespace App\ScreamingFrog\Command\Listener;
+namespace App\Command\Listener;
 
-use App\ScreamingFrog\Helper\LogHelper;
+use App\Helper\LogHelper;
 use Symfony\Component\Console\ConsoleEvents;
 use Symfony\Component\Console\Event\ConsoleCommandEvent;
 use Symfony\Component\Console\Event\ConsoleErrorEvent;

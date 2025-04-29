@@ -1,9 +1,9 @@
 <?php
 
-namespace App\ScreamingFrog\Command;
+namespace App\Command;
 
-use App\ScreamingFrog\Helper\CommandHelper;
-use App\ScreamingFrog\Helper\CsvHelper;
+use App\Helper\CommandHelper;
+use App\Helper\CsvHelper;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;

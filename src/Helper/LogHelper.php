@@ -1,6 +1,6 @@
 <?php
 
-namespace App\ScreamingFrog\Helper;
+namespace App\Helper;
 
 use Symfony\Component\Filesystem\Filesystem;
 

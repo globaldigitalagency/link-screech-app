@@ -1,6 +1,6 @@
 <?php
 
-namespace App\ScreamingFrog\Enum;
+namespace App\Enum;
 
 enum CrawlFileEnum: string
 {

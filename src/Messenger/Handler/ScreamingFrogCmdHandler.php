@@ -1,9 +1,9 @@
 <?php
 
-namespace App\ScreamingFrog\Messenger\Handler;
+namespace App\Messenger\Handler;
 
-use App\ScreamingFrog\Helper\CommandHelper;
-use App\ScreamingFrog\Messenger\Object\ScreamingFrogCmd;
+use App\Helper\CommandHelper;
+use App\Messenger\Object\ScreamingFrogCmd;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 use Symfony\Component\Process\PhpExecutableFinder;
 
