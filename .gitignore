@@ -17,3 +17,18 @@
 /.yarnrc
 /.npmrc
 /.bash_project_perso.sh
+
+# ScreamingFrogSEOSpider
+/.ScreamingFrogSEOSpider/*
+!/.ScreamingFrogSEOSpider/config
+!/.ScreamingFrogSEOSpider/reports
+/.ScreamingFrogSEOSpider/reports/*
+!/.ScreamingFrogSEOSpider/reports/.gitkeep
+/.java
+/.pdfbox.cache
+
+###> symfony/webpack-encore-bundle ###
+/node_modules/
+npm-debug.log
+yarn-error.log
+###< symfony/webpack-encore-bundle ###

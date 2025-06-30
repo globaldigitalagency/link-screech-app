@@ -1,0 +1,6 @@
+.card {
+    &:hover {
+        filter: brightness(85%);
+        transition: filter 0.5s;
+    }
+}

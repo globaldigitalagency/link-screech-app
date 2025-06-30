@@ -1,0 +1,9 @@
+list:
+  path: /list/{page}
+  methods: [GET]
+  controller: App\Controller\GroupController::list
+
+new:
+  path: /new
+  methods: [GET, POST]
+  controller: App\Controller\GroupController::new

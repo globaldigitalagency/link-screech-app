@@ -1,0 +1,35 @@
+{% extends 'screaming_frog/layout.html.twig' %}
+
+{% block content %}
+  <div class="list container">
+    <div class="d-flex justify-content-between gap-4 mb-3">
+      <h1>Liste des groupes de crawls</h1>
+      <div>
+        <a class="btn btn-success" href="{{ path('screaming_frog_group_new') }}"><i class="bi bi-plus-lg"></i> Nouveau
+          groupe</a>
+      </div>
+    </div>
+    <div class="row">
+      {% for group in groups %}
+        <a class="col-lg-3 col-md-6 col-12"
+           href="{{ path('screaming_frog_crawl_list', {'group': group.name, 'page': 1}) }}">
+          <div class="card">
+              <span class="card-header">
+                {{ group.name }}
+              </span>
+            <div class="card-body">
+              <p class="card-text">Date : {{ group.date|date('d-m-Y') }}</p>
+              <p class="card-text">Crawls : {{ group.crawlsNumber }}</p>
+            </div>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+
+    {% include '_partials/_pagination.html.twig' with {
+      previousLink: path('screaming_frog_group_list', {'page': page - 1}),
+      pageLink: path('screaming_frog_group_list', {'page': '__page__'}),
+      nextLink: path('screaming_frog_group_list', {'page': page + 1}),
+    } %}
+  </div>
+{% endblock %}

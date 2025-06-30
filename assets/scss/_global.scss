@@ -1,0 +1,52 @@
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+
+    body {
+        font-size: 1.4rem;
+        font-family: sans-serif;
+        margin: 0;
+
+        main {
+            > .container {
+                padding-top: 5vh;
+                padding-bottom: 5vh;
+
+                &-fluid {
+                    padding-top: 5vh;
+                    padding-bottom: 5vh;
+                }
+            }
+
+            a {
+                text-decoration: none;
+                color: inherit;
+            }
+
+            .form-control, .input-group-text, .btn, .toast {
+                font-size: 1.4rem;
+            }
+
+            .w-fc {
+                width: fit-content!important;
+            }
+
+            .w-mc {
+                width: max-content!important;
+            }
+
+            .row {
+                & > * {
+                    padding: calc(var(--bs-gutter-x) * 0.5);
+                }
+            }
+
+            .toasts {
+                right: 3vh;
+                bottom: 3vh;
+            }
+        }
+    }
+}
+
+

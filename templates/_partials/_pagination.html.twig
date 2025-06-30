@@ -1,0 +1,41 @@
+<div class="d-flex justify-content-center p-3">
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item">
+        {% if page > 1 %}
+          <a href="{{ previousLink }}" class="page-link">
+            Précédent
+          </a>
+        {% else %}
+          <a href="#" class="page-link disabled" tabindex="-1" aria-disabled="true">
+            Précédent
+          </a>
+        {% endif %}
+      </li>
+
+      {% for pageNumber in 1..maxPage %}
+        <li class="page-item">
+          {% if page == pageNumber %}
+            <a href="#" class="page-link active">{{ pageNumber }}</a>
+          {% else %}
+            <a href="{{ pageLink|replace({'__page__': pageNumber}) }}" class="page-link">
+              {{ pageNumber }}
+            </a>
+          {% endif %}
+        </li>
+      {% endfor %}
+
+      <li class="page-item">
+        {% if page < maxPage %}
+          <a href="{{ nextLink }}" class="page-link">
+            Suivant
+          </a>
+        {% else %}
+          <a href="#" class="page-link disabled" tabindex="-1" aria-disabled="true">
+            Suivant
+          </a>
+        {% endif %}
+      </li>
+    </ul>
+  </nav>
+</div>

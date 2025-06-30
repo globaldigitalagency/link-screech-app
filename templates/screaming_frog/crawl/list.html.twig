@@ -1,0 +1,34 @@
+{% extends 'screaming_frog/layout.html.twig' %}
+
+{% block content %}
+  <div class="group container">
+    <div class="mb-3">
+      <h1>Liste des crawls du groupe {{ group }}</h1>
+    </div>
+    <div class="row">
+      {% for crawl in crawls %}
+        <a class="col-lg-3 col-md-4 col-12" href="{{ path('screaming_frog_crawl_show', {'group': group, 'crawl': crawl.folderName}) }}">
+          <div class="card">
+            <span class="card-header">
+              {{ crawl.url }}
+            </span>
+            <div class="card-body">
+              <p class="card-text">
+                Heure : {{ crawl.date|date('H:i:s') }} <br>
+                URLs parcourues : {{ crawl.summary.urlsEncounteredNumber }} <br>
+                Outlinks : {{ crawl.summary.outlinksNumber }} <br>
+                Domanes inactifs : {{ crawl.summary.urlsDomainExpiredNumber }}
+              </p>
+            </div>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+
+    {% include '_partials/_pagination.html.twig' with {
+      previousLink: path('screaming_frog_crawl_list', {'group': group, 'page': page - 1}),
+      pageLink: path('screaming_frog_crawl_list', {'group': group, 'page': '__page__'}),
+      nextLink: path('screaming_frog_crawl_list', {'group': group, 'page': page + 1}),
+    } %}
+  </div>
+{% endblock %}
