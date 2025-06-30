@@ -14,8 +14,7 @@ class CommandEventListener implements EventSubscriberInterface
 {
     public function __construct(
         private readonly LogHelper $logHelper,
-    )
-    {
+    ) {
     }
 
     public static function getSubscribedEvents()
@@ -46,7 +45,7 @@ class CommandEventListener implements EventSubscriberInterface
     private function onConsoleCommand(ConsoleCommandEvent $event)
     {
         $this->logHelper->manageLogFiles();
-        $this->logHelper->log(ConsoleEvents::COMMAND, 'Starting command ' . $event->getCommand()->getName());
+        $this->logHelper->log(ConsoleEvents::COMMAND, 'Starting command '.$event->getCommand()->getName());
     }
 
     private function onConsoleError(ConsoleErrorEvent $event)
@@ -56,6 +55,6 @@ class CommandEventListener implements EventSubscriberInterface
 
     private function onConsoleTerminate(ConsoleTerminateEvent $event)
     {
-        $this->logHelper->log(ConsoleEvents::TERMINATE, $event->getCommand()->getName() . ' finished');
+        $this->logHelper->log(ConsoleEvents::TERMINATE, $event->getCommand()->getName().' finished');
     }
 }

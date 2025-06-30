@@ -12,8 +12,7 @@ class CsvHelper
         private readonly string $delimiter = ',',
         private readonly string $enclosure = '"',
         private readonly string $escape = '\\'
-    )
-    {
+    ) {
     }
 
     public function getAllRows(string $fileName): array
@@ -22,6 +21,7 @@ class CsvHelper
         foreach ($this->getRowGenerator($fileName) as $row) {
             $rows[] = $row;
         }
+
         return $rows;
     }
 
@@ -35,6 +35,7 @@ class CsvHelper
         $file->seek($line);
 
         $row = $file->fgetcsv($this->delimiter, $this->enclosure, $this->escape);
+
         return $row !== false ? $row : null;
     }
 
@@ -58,6 +59,7 @@ class CsvHelper
         }
 
         fclose($file);
+
         return $count;
     }
 

@@ -15,15 +15,14 @@ class CrawlController extends AbstractController
         private readonly string $projectDir,
         private readonly string $reportsPath,
         private readonly CrawlHelper $crawlHelper,
-    )
-    {
+    ) {
     }
 
     public function list(string $group, int $page = 1): Response
     {
         $groupDir = sprintf('%s/%s/%s', $this->projectDir, $this->reportsPath, $group);
-        if (!is_dir($groupDir) ) {
-            throw new \Exception('Crawl directory does not exist: ' . $groupDir);
+        if (!is_dir($groupDir)) {
+            throw new \Exception('Crawl directory does not exist: '.$groupDir);
         }
 
         $fd = new Finder();
@@ -32,7 +31,7 @@ class CrawlController extends AbstractController
         $maxPage = ceil($fd->count() / self::NUMBER_BY_PAGE);
         if ($maxPage <= 0) {
             return $this->redirectToRoute('screaming_frog_group_list', [
-                'page' => 1
+                'page' => 1,
             ]);
         } elseif ($page < 1 || $page > $maxPage) {
             return $this->redirectToRoute('screaming_frog_crawl_list', [
@@ -54,8 +53,8 @@ class CrawlController extends AbstractController
     public function show(string $group, string $crawl): Response
     {
         $crawlDir = sprintf('%s/%s/%s/%s', $this->projectDir, $this->reportsPath, $group, $crawl);
-        if (!is_dir($crawlDir) ) {
-            throw new \Exception('Crawl directory does not exist: ' . $crawlDir);
+        if (!is_dir($crawlDir)) {
+            throw new \Exception('Crawl directory does not exist: '.$crawlDir);
         }
 
         $crawlModel = $this->crawlHelper->getCurrentCrawl($crawlDir, $crawl);

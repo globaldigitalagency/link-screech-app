@@ -8,7 +8,6 @@ class TableModel
         public ?string $name = null,
         public array $fields = [],
         public array $data = [],
-    )
-    {
+    ) {
     }
 }

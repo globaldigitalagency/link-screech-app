@@ -20,7 +20,7 @@ class CrawlHelper
         $start = ($page - 1) * $numberByPage;
 
         $crawls = iterator_to_array($crawls);
-        usort($crawls, fn ($a, $b) => $a->getBasename() <=> $b->getBasename());
+        usort($crawls, fn($a, $b) => $a->getBasename() <=> $b->getBasename());
         $wantedCrawls = array_slice($crawls, $start, $numberByPage);
 
         $mappedCrawls = [];
@@ -42,7 +42,7 @@ class CrawlHelper
 
     public function getCurrentCrawl(string $crawlPath, string $crawlDir, bool $groupDisplay = false): ?CrawlModel
     {
-        if(!is_dir($crawlPath)) {
+        if (!is_dir($crawlPath)) {
             return null;
         }
 
@@ -52,11 +52,18 @@ class CrawlHelper
             return null;
         }
 
-        $crawlModel = new CrawlModel($url, $crawlDir, DateTime::createFromFormat('Y.m.d.H.i.s', $crawlDir), $this->buildSummary($crawlPath));
-        if(!$groupDisplay) {
+        $crawlModel = new CrawlModel(
+            $url,
+            $crawlDir,
+            DateTime::createFromFormat('Y.m.d.H.i.s', $crawlDir),
+            $this->buildSummary($crawlPath)
+        );
+        if (!$groupDisplay) {
             $crawlModel->tables[] =
-                $this->buildTable(sprintf('%s/%s', $crawlPath, CrawlFileEnum::EXTERNAL_NO_RESPONSE_FILE_NAME->value), 'Domaines inactifs')
-            ;
+                $this->buildTable(
+                    sprintf('%s/%s', $crawlPath, CrawlFileEnum::EXTERNAL_NO_RESPONSE_FILE_NAME->value),
+                    'Domaines inactifs'
+                );
         }
 
         return $crawlModel;
@@ -65,9 +72,9 @@ class CrawlHelper
     private function buildSummary(string $crawlDir): SummaryModel
     {
         return new SummaryModel(
-            $this->csvHelper->countRows($crawlDir . '/' . CrawlFileEnum::ALL_URL_FILE_NAME->value) - 1,
-            $this->csvHelper->countRows($crawlDir . '/' . CrawlFileEnum::OUTLINKS_FILE_NAME->value) - 1,
-            $this->csvHelper->countRows($crawlDir . '/' . CrawlFileEnum::EXTERNAL_NO_RESPONSE_FILE_NAME->value) - 1,
+            $this->csvHelper->countRows($crawlDir.'/'.CrawlFileEnum::ALL_URL_FILE_NAME->value) - 1,
+            $this->csvHelper->countRows($crawlDir.'/'.CrawlFileEnum::OUTLINKS_FILE_NAME->value) - 1,
+            $this->csvHelper->countRows($crawlDir.'/'.CrawlFileEnum::EXTERNAL_NO_RESPONSE_FILE_NAME->value) - 1,
         );
     }
 

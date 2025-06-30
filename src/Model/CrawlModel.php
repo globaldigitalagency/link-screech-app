@@ -13,7 +13,6 @@ class CrawlModel
         public ?SummaryModel $summary = null,
         /** @var TableModel[] $tables */
         public array $tables = [],
-    )
-    {
+    ) {
     }
 }

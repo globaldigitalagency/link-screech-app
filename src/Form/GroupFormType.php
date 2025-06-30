@@ -25,7 +25,6 @@ class GroupFormType extends AbstractType
                 'label' => 'Nom du groupe de crawl',
                 'mapped' => false,
                 'required' => true,
-            ])
-        ;
+            ]);
     }
 }

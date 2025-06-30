@@ -11,8 +11,7 @@ class CommandHelper
         private readonly string $projectDir,
         private readonly string $screamingFrogConfigPath,
         private readonly string $reportsPath,
-    )
-    {
+    ) {
     }
 
     public function runCrawls(array $urls, string $crawlName): string
@@ -46,15 +45,22 @@ class CommandHelper
 
         $command = [
             'screamingfrogseospider',
-            '--crawl', $crawl,
+            '--crawl',
+            $crawl,
             '--headless',
-            '--output-folder', $crawlPath,
-            '--config', $config,
-            '--export-format', $exportFormat,
-            '--bulk-export', implode(',', $bulkExport),
-            '--export-tabs', implode(',', $exportTabs),
+            '--output-folder',
+            $crawlPath,
+            '--config',
+            $config,
+            '--export-format',
+            $exportFormat,
+            '--bulk-export',
+            implode(',', $bulkExport),
+            '--export-tabs',
+            implode(',', $exportTabs),
             '--timestamped-output',
-            '--save-report', implode(',', $saveReport),
+            '--save-report',
+            implode(',', $saveReport),
         ];
 
         return $this->runCommand($command);

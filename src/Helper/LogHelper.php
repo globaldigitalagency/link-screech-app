@@ -21,7 +21,7 @@ class LogHelper
 
     private function getLogFilePath(?string $date = null): string
     {
-        $filename = sprintf('%s%s.log', $this->fileName, empty($date) ? '' : '_'.$date );
+        $filename = sprintf('%s%s.log', $this->fileName, empty($date) ? '' : '_'.$date);
 
         return sprintf('%s/%s/%s', $this->projectDir, self::LOGS_DIR, $filename);
     }
@@ -49,7 +49,7 @@ class LogHelper
         $formattedMessage = sprintf("%s - [%s] %s\n", $date->format('Y-m-d H:i:s'), $type, $message);
 
         $fs = new Filesystem();
-        if(!file_exists($logFilePath)) {
+        if (!file_exists($logFilePath)) {
             $fs->touch($logFilePath);
         }
 

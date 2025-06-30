@@ -10,7 +10,6 @@ class GroupModel
         public int $crawlsNumber = 0,
         public ?string $name = null,
         public ?DateTime $date = null,
-    )
-    {
+    ) {
     }
 }

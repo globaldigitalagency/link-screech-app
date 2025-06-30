@@ -22,16 +22,15 @@ class GroupController extends AbstractController
         private readonly string $csvUploadPath,
         private readonly GroupHelper $groupHelper,
         private readonly MessageBusInterface $bus,
-    )
-    {
+    ) {
     }
 
     public function list(int $page): Response
     {
         $reportsPath = sprintf('%s/%s', $this->projectDir, $this->reportsPath);
 
-        if (!is_dir($reportsPath) ) {
-            throw new \Exception('Reports directory does not exist: ' . $reportsPath);
+        if (!is_dir($reportsPath)) {
+            throw new \Exception('Reports directory does not exist: '.$reportsPath);
         }
 
         $fd = new Finder();
@@ -58,8 +57,8 @@ class GroupController extends AbstractController
     public function new(Request $request): Response
     {
         $reportsPath = sprintf('%s/%s', $this->projectDir, $this->reportsPath);
-        if (!is_dir($reportsPath) ) {
-            throw new \Exception('Reports directory does not exist: ' . $reportsPath);
+        if (!is_dir($reportsPath)) {
+            throw new \Exception('Reports directory does not exist: '.$reportsPath);
         }
 
         $form = $this->createForm(GroupFormType::class);
@@ -71,13 +70,15 @@ class GroupController extends AbstractController
 
             $file->move(sprintf('%s/%s', $this->projectDir, $this->csvUploadPath), $file->getClientOriginalName());
 
-            $this->bus->dispatch(new ScreamingFrogCmd(
-                sprintf('%s/%s/%s', $this->projectDir, $this->csvUploadPath, $file->getClientOriginalName()),
-                $crawlName,
-            ));
+            $this->bus->dispatch(
+                new ScreamingFrogCmd(
+                    sprintf('%s/%s/%s', $this->projectDir, $this->csvUploadPath, $file->getClientOriginalName()),
+                    $crawlName,
+                )
+            );
 
             return $this->redirectToRoute('screaming_frog_group_list', [
-                'page' => 1
+                'page' => 1,
             ]);
         }
 

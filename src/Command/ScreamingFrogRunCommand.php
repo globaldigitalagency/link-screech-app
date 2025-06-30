@@ -17,8 +17,7 @@ class ScreamingFrogRunCommand extends Command
     public function __construct(
         private readonly CommandHelper $commandHelper,
         private readonly CsvHelper $csvHelper,
-    )
-    {
+    ) {
         parent::__construct($this->getName());
     }
 
@@ -26,8 +25,7 @@ class ScreamingFrogRunCommand extends Command
     {
         $this
             ->addArgument('filePath', InputArgument::REQUIRED, 'File path with URLs to crawl')
-            ->addArgument('crawlName', InputArgument::REQUIRED, 'Name of the crawl group')
-        ;
+            ->addArgument('crawlName', InputArgument::REQUIRED, 'Name of the crawl group');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int

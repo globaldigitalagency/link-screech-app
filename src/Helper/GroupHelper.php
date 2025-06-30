@@ -29,7 +29,7 @@ class GroupHelper
             $groupModel = new GroupModel(
                 crawlsNumber: $fd->count(),
                 name: $group->getBasename(),
-                date: new DateTime('@' . $group->getCTime()),
+                date: new DateTime('@'.$group->getCTime()),
             );
 
             yield $groupModel;
