@@ -13,7 +13,7 @@ framework:
             # sync: 'sync://'
 
         routing:
-          'App\ScreamingFrog\Messenger\Object\ScreamingFrogCmd': async
+          'App\Messenger\Object\ScreamingFrogCmd': async
 
 # when@test:
 #    framework:

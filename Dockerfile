@@ -1,4 +1,4 @@
-FROM globaldigitalagency/sample:8.3
+FROM globaldigitalagency/sample:8.4
 
 # Switch to root for installations
 USER root
