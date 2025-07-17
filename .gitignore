@@ -20,6 +20,7 @@
 
 # ScreamingFrogSEOSpider
 /.ScreamingFrogSEOSpider/*
+!/.ScreamingFrogSEOSpider/spider.config
 !/.ScreamingFrogSEOSpider/config
 !/.ScreamingFrogSEOSpider/reports
 /.ScreamingFrogSEOSpider/reports/*
